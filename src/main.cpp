@@ -1,4 +1,5 @@
-#include "task.hpp"
+#include "scheduler.hpp"
+#include "task.hpp" 
 #include <iostream>
 
 void sensorTask() {
@@ -18,9 +19,13 @@ int main() {
     Task motor(2, "motor_task", motorTask);
     Task telemetry(3, "telemetry_task", telemetryTask);
     
-    sensor.run();
-    motor.run();
-    telemetry.run();
+    Scheduler scheduler;
+
+    scheduler.addTask(sensor);
+    scheduler.addTask(motor);
+    scheduler.addTask(telemetry);
+
+    scheduler.start();
 
     return 0;
 }

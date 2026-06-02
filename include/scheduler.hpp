@@ -6,6 +6,8 @@
 class Scheduler {
     public:
         void addTask(const Task& task);
+        void runOnce();
+        void start();
 
     private:
         std::vector<Task> tasks;
