@@ -1,7 +1,7 @@
 #include "task.hpp"
 
-Task::Task(int id, const std::string& name)
-    : id(id), name(name), state(TaskState::READY) {}
+Task::Task(int id, const std::string& name, TaskFunction function)
+    : id(id), name(name), state(TaskState::READY), function(function) {}
 
 int Task::getId() const {
     return id;
@@ -17,4 +17,14 @@ TaskState Task::getState() const {
 
 void Task::setState(TaskState newState) {
     state = newState;
+}
+
+void Task::run() {
+    if (state == TaskState::READY) {
+        return;
+    }
+
+    state = TaskState::RUNNING;
+    function();
+    state = TaskState::READY;
 }

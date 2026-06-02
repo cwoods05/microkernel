@@ -1,20 +1,26 @@
 #include "task.hpp"
 #include <iostream>
 
+void sensorTask() {
+    std::cout << "Reading fake sensor data" << std::endl;
+}
+
+void motorTask() {
+    std::cout << "Updating fake motor control" << std::endl;
+}
+
+void telemetryTask() {
+    std::cout << "Sending fake telemetry" << std::endl;
+}
+
 int main() {
-    Task task(1, "sensor_task");
-
-    std::cout << "Created task: "
-          << task.getId()
-          << " "
-          << task.getName()
-          << std::endl;
-
-    task.setState(TaskState::RUNNING);
-
-    if (task.getState() == TaskState::RUNNING) {
-        std::cout << "Task is running" << std::endl;
-    }
+    Task sensor(1, "sensor_task", sensorTask);
+    Task motor(2, "motor_task", motorTask);
+    Task telemetry(3, "telemetry_task", telemetryTask);
+    
+    sensor.run();
+    motor.run();
+    telemetry.run();
 
     return 0;
 }
