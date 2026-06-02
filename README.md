@@ -1,0 +1,1 @@
+A tiny RTOS-style kernel for learning embedded systems and operating systems concepts.
