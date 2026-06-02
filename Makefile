@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -Iinclude
 
-SRC = src/main.cpp src/task.cpp src/scheduler.cpp
+SRC = src/main.cpp src/task.cpp src/scheduler.cpp src/mutex.cpp src/semaphore.cpp
 OUT = microkernel
 
 all:
